@@ -1,12 +1,16 @@
-import { Pool, type PoolConfig } from 'pg';
+import type { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-export function createDatabasePool(): Pool {
-  const connectionString = process.env.DATABASE_URL;
+export function getDatabaseConfig(): TypeOrmModuleOptions {
+  const url = process.env.DATABASE_URL;
 
-  if (!connectionString) {
+  if (!url) {
     throw new Error('DATABASE_URL is not configured');
   }
 
-  const config: PoolConfig = { connectionString };
-  return new Pool(config);
+  return {
+    type: 'postgres',
+    url,
+    autoLoadEntities: true,
+    synchronize: process.env.NODE_ENV === 'development',
+  };
 }

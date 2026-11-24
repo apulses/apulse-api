@@ -1,16 +1,12 @@
 import { existsSync } from 'node:fs';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { createDatabasePool } from './core/config/database.config';
 
 async function bootstrap() {
   if (existsSync('.env')) {
     process.loadEnvFile('.env');
   }
 
-  const database = createDatabasePool();
-  await database.query('SELECT 1');
-
+  const { NestFactory } = await import('@nestjs/core');
+  const { AppModule } = await import('./app.module.js');
   const app = await NestFactory.create(AppModule);
   const corsOrigins = process.env.CORS_ORIGINS?.split(',')
     .map((origin) => origin.trim())
