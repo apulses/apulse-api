@@ -1,0 +1,51 @@
+name: apulse
+
+services:
+  db:
+    container_name: apulse-postgres
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-apulse}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - apulse-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - apulse-network
+
+  api:
+    container_name: ${CONTAINER_NAME:-apulse-api}
+    image: apulse-api:latest
+    build:
+      context: .
+      dockerfile: dockerfile
+    env_file:
+      - .env
+    environment:
+      PORT: ${API_PORT:-3001}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@db:5432/apulse}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '${API_PORT:-3001}:${API_PORT:-3001}'
+    restart: unless-stopped
+    networks:
+      - apulse-network
+
+networks:
+  apulse-network:
+    name: apulse-network
+    driver: bridge
+
+volumes:
+  apulse-postgres-data:
+    name: apulse-postgres-data
