@@ -85,10 +85,9 @@ export class AuthService {
   async logout(refreshToken: string): Promise<void> {
     const tokenHash = createHash('sha256').update(refreshToken).digest('hex');
 
-    await this.dataSource.getRepository(RefreshToken).update(
-      { tokenHash, revokedAt: IsNull() },
-      { revokedAt: new Date() },
-    );
+    await this.dataSource
+      .getRepository(RefreshToken)
+      .update({ tokenHash, revokedAt: IsNull() }, { revokedAt: new Date() });
   }
 
   async login(dto: LoginDto): Promise<AuthTokenResponse> {
