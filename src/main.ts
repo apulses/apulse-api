@@ -17,8 +17,12 @@ async function bootstrap() {
     .filter(Boolean);
 
   app.setGlobalPrefix('api');
-  app.enableCors({ origin: corsOrigins?.length ? corsOrigins : false });
-
+  app.enableCors({
+    origin: corsOrigins?.length ? corsOrigins : false,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
   await app.listen(process.env.PORT ?? 3001, '0.0.0.0');
 }
 
