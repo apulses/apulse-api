@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { existsSync } from 'node:fs';
 
 async function bootstrap() {
@@ -19,6 +20,13 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
   await app.listen(process.env.PORT ?? 3001, '0.0.0.0');
 }
 

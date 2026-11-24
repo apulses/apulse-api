@@ -6,10 +6,12 @@ export interface RegisterPayload {
   phone?: string | null;
 }
 
-export interface TokenPair {
+export interface AuthTokenResponse {
   accessToken: string;
   refreshToken: string;
 }
+
+export type TokenPair = AuthTokenResponse;
 
 export interface LoginPayload {
   email: string;
