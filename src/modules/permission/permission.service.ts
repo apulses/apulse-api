@@ -5,7 +5,7 @@ import { UpdatePermissionDto } from './dto/update-permission.dto';
 @Injectable()
 export class PermissionService {
   create(createPermissionDto: CreatePermissionDto) {
-    return 'This action adds a new permission';
+    return `This action adds a new permission: ${JSON.stringify(createPermissionDto)}`;
   }
 
   findAll() {
@@ -17,7 +17,7 @@ export class PermissionService {
   }
 
   update(id: number, updatePermissionDto: UpdatePermissionDto) {
-    return `This action updates a #${id} permission`;
+    return `This action updates a #${id} permission: ${JSON.stringify(updatePermissionDto)}`;
   }
 
   remove(id: number) {

@@ -5,7 +5,7 @@ import { UpdateAnalyticDto } from './dto/update-analytic.dto';
 @Injectable()
 export class AnalyticService {
   create(createAnalyticDto: CreateAnalyticDto) {
-    return 'This action adds a new analytic';
+    return `This action adds a new analytic: ${JSON.stringify(createAnalyticDto)}`;
   }
 
   findAll() {
@@ -17,7 +17,7 @@ export class AnalyticService {
   }
 
   update(id: number, updateAnalyticDto: UpdateAnalyticDto) {
-    return `This action updates a #${id} analytic`;
+    return `This action updates a #${id} analytic: ${JSON.stringify(updateAnalyticDto)}`;
   }
 
   remove(id: number) {
