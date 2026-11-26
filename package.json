@@ -9,11 +9,6 @@
     "node": ">=22.13.0"
   },
   "packageManager": "pnpm@11.20.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher"
-    ]
-  },
   "scripts": {
     "build": "nest build && tsc-alias -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
