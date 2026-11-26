@@ -7,8 +7,8 @@ import {
   Unique,
 } from 'typeorm';
 
-import { Offer } from './offer.entity.js';
-import { Order } from '../../order/entities/order.entity.js';
+import { Offer } from './offer.entity';
+import { Order } from '../../order/entities/order.entity';
 
 @Entity('offer_orders')
 @Unique('UQ_offer_order', ['orderId', 'offerId'])

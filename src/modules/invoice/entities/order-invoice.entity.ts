@@ -7,8 +7,8 @@ import {
   Column,
 } from 'typeorm';
 
-import { Order } from '../../order/entities/order.entity.js';
-import { Invoice } from './invoice.entity.js';
+import { Order } from '../../order/entities/order.entity';
+import { Invoice } from './invoice.entity';
 
 @Entity('order_invoice')
 @Unique('UQ_order_invoice', ['orderId', 'invoiceId'])

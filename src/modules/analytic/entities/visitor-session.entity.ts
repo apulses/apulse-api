@@ -1,3 +1,4 @@
+import { Visitor } from '../../visitor/entities/visitor.entity';
 import {
   Column,
   CreateDateColumn,
@@ -7,7 +8,6 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Visitor } from '../../visitor/entities/visitor.entity.js';
 
 @Entity('visitor_sessions')
 @Index('IDX_visitor_sessions_visitor_started', ['visitorId', 'startedAt'])

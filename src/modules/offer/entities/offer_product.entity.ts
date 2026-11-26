@@ -1,14 +1,14 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
-import { Product } from '../../product/entities/product.entity.js';
-import { Offer } from './offer.entity.js';
+import { Product } from '../../product/entities/product.entity';
+import { Offer } from './offer.entity';
 
 @Entity('offer_product')
 export class OfferProduct {
   @PrimaryColumn({ name: 'offer_id', type: 'uuid' })
-  offerId: number;
+  offerId: string;
 
   @PrimaryColumn({ name: 'product_id', type: 'uuid' })
-  productId: number;
+  productId: string;
 
   @ManyToOne(() => Product, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'product_id' })

@@ -8,8 +8,8 @@ import {
   Unique,
 } from 'typeorm';
 
-import { User } from '../../user/entities/user.entity.js';
-import { Permission } from './permission.entity.js';
+import { User } from '../../user/entities/user.entity';
+import { Permission } from './permission.entity';
 
 @Entity('user_permissions')
 @Unique('UQ_user_permission', ['userId', 'permissionId'])

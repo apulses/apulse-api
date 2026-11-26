@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 import type { Role as SharedRole, RoleCode } from 'src/types';
-import { Permission } from 'src/modules/permission/entities/permission.entity';
+import { Permission } from '../../permission/entities/permission.entity';
 
 @Entity('roles')
 export class Role implements SharedRole {

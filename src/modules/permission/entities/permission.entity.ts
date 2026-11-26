@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import type { Permission as SharedPermission, PermissionCode } from 'src/types';
-import { Role } from '../../role/entities/role.entity.js';
+import { Role } from '../../role/entities/role.entity';
 
 @Entity('permissions')
 export class Permission implements SharedPermission {

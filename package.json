@@ -5,6 +5,9 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "packageManager": "pnpm@11.20.0",
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -13,6 +16,15 @@
   },
   "scripts": {
     "build": "nest build && tsc-alias -p tsconfig.json",
+    "migration:create": "typeorm migration:create src/database/migrations",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/database/data-source.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts",
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/database/data-source.ts",
+    "migration:build": "pnpm build",
+    "migration:run:prod": "typeorm migration:run -d dist/database/data-source.js",
+    "migration:revert:prod": "typeorm migration:revert -d dist/database/data-source.js",
+    "migration:show:prod": "typeorm migration:show -d dist/database/data-source.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

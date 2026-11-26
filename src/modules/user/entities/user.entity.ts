@@ -12,7 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Role } from '../../role/entities/role.entity.js';
+import { Role } from '../../role/entities/role.entity';
 
 @Entity('users')
 @Index('UQ_users_email', ['email'], { unique: true })

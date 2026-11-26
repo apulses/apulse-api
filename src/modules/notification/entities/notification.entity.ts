@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { User } from '../../user/entities/user.entity.js';
+import { User } from '../../user/entities/user.entity';
 
 @Entity('notifications')
 export class Notification {

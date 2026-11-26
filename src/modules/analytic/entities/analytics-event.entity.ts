@@ -7,8 +7,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-
-import { VisitorSession } from './visitor-session.entity.js';
+import { VisitorSession } from './visitor-session.entity';
 
 @Entity('analytics_events')
 @Index('IDX_analytics_events_session_created', ['sessionId', 'createdAt'])

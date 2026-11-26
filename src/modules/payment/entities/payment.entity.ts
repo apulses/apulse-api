@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { Invoice } from '../../invoice/entities/invoice.entity.js';
+import { Invoice } from '../../invoice/entities/invoice.entity';
 
 @Entity('payments')
 export class Payment {

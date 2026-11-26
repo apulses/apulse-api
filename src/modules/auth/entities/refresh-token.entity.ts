@@ -1,3 +1,4 @@
+import { User } from '../../user/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
@@ -7,8 +8,6 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-
-import { User } from '../../user/entities/user.entity.js';
 
 @Entity('refresh_tokens')
 @Index('IDX_refresh_tokens_user_id', ['userId'])
